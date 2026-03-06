@@ -76,7 +76,7 @@ h1, h2, h3, .logo {
 /* Navbar */
 .navbar {
     display: flex;
-    justify-content: center; /* Change from space-between to center */
+    justify-content: space-between; /* Push logo left, links right */
     align-items: center;
     padding: 1.5rem 5%;
     background: rgba(10, 10, 10, 0.8);
@@ -90,8 +90,8 @@ h1, h2, h3, .logo {
 }
 
 .logo {
-    position: absolute; /* Take out of flow to keep nav centered */
-    left: 5%;
+    position: relative; /* Reset to normal flow */
+    left: auto;
     font-size: 2rem;
     font-weight: 700;
     color: var(--text-main); /* Match body text */
@@ -106,7 +106,7 @@ h1, h2, h3, .logo {
 }
 
 .nav-links li {
-    margin: 0 1.5rem; /* Even spacing */
+    margin-left: 2rem; /* Restore left margin only */
 }
 
 .nav-links a {
@@ -142,8 +142,8 @@ h1, h2, h3, .logo {
     cursor: pointer;
     font-size: 1.5rem;
     color: var(--text-main);
-    position: absolute; /* Keep it on right for mobile */
-    right: 5%;
+    position: relative; /* Reset */
+    right: auto;
 }
 
 /* Background Canvas */

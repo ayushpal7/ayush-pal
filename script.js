@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- Typing Effect ---
-    const roles = ["Developer", "Graphic Designer", "Web Creator", "Tech Enthusiast"];
+    const roles = ["Web Developer", "Graphic Designer", "Tech Enthusiast", "UI/UX Designer"];
     const typingElement = document.querySelector('.typing-text');
     let roleIndex = 0;
     let charIndex = 0;

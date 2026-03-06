@@ -125,6 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Canvas Background Animation (Fireflies/Particles) ---
     const canvas = document.getElementById('bgCanvas');
+    let mouseX = 0, mouseY = 0;
+    
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -142,17 +149,27 @@ document.addEventListener('DOMContentLoaded', () => {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.size = Math.random() * 2 + 1; // 1 to 3px
-                this.speedX = Math.random() * 1 - 0.5; // -0.5 to 0.5
-                this.speedY = Math.random() * 1 - 0.5;
-                this.color = `rgba(255, 153, 51, ${Math.random() * 0.5 + 0.1})`; // Saffron with variable opacity
+                this.size = Math.random() * 3 + 1; // 1 to 4px
+                this.speedX = Math.random() * 2 - 1; // Faster
+                this.speedY = Math.random() * 2 - 1;
+                this.color = `hsla(${Math.random() * 360}, 100%, 50%, ${Math.random() * 0.5 + 0.3})`; // RGB rainbow
             }
 
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                // Wrap around screen
+                // Mouse interaction - move away from mouse
+                const dx = this.x - mouseX;
+                const dy = this.y - mouseY;
+                const distance = Math.sqrt(dx*dx + dy*dy);
+                
+                if (distance < 100) {
+                    const angle = Math.atan2(dy, dx);
+                    this.x += Math.cos(angle) * 5;
+                    this.y += Math.sin(angle) * 5;
+                }
+
                 if (this.x > width) this.x = 0;
                 if (this.x < 0) this.x = width;
                 if (this.y > height) this.y = 0;

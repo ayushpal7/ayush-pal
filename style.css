@@ -173,7 +173,13 @@ h1, h2, h3, .logo {
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 30px rgba(0,229,255,0.1);
     backdrop-filter: blur(5px);
-    transform: translateZ(50px); /* Pop out */
+    transform: translateZ(50px);
+    display: flex; /* Flex layout */
+    flex-direction: column; /* Vertical stack */
+    align-items: center; /* Horiz center */
+    justify-content: center; /* Vert center if height was set */
+    max-width: 90%;
+    margin: 0 auto; /* Safety */
 }
 
 /* CSS Mandala/Pattern Effect - kept but subtle */

@@ -81,61 +81,72 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Custom Cursor ---
+    // --- Custom Cursor (Optimized) ---
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
-
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        // Dot follows instantly
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        // Outline follows with slight delay (handled by CSS transition for smooth feel, or JS for lag)
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
-
-    // --- 3D Tilt Effect for Cards ---
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * -10; // Max rotation deg
-            const rotateY = ((x - centerX) / centerX) * 10;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
-        });
-    });
-
-    // --- Canvas Background Animation (Fireflies/Particles) ---
-    const canvas = document.getElementById('bgCanvas');
+    let rafId = null;
     let mouseX = 0, mouseY = 0;
-    
+    let outlineX = 0, outlineY = 0;
+
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        
+        if (!rafId) {
+            rafId = requestAnimationFrame(() => {
+                cursorDot.style.left = mouseX + 'px';
+                cursorDot.style.top = mouseY + 'px';
+                
+                outlineX += (mouseX - outlineX) * 0.2;
+                outlineY += (mouseY - outlineY) * 0.2;
+                cursorOutline.style.left = outlineX + 'px';
+                cursorOutline.style.top = outlineY + 'px';
+                
+                rafId = null;
+            });
+        }
     });
 
+    // --- 3D Tilt Effect for Cards (Optimized) ---
+    const cards = document.querySelectorAll('.card');
+    let tiltRafId = null;
+    let currentCard = null;
+    let tiltX = 0, tiltY = 0;
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            currentCard = card;
+            if (!tiltRafId) {
+                tiltRafId = requestAnimationFrame(() => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    tiltX = ((y - centerY) / centerY) * -8;
+                    tiltY = ((x - centerX) / centerX) * 8;
+                    
+                    card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
+                    tiltRafId = null;
+                });
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+            currentCard = null;
+        });
+    });
+
+    // --- Canvas Background Animation (Optimized) ---
+    const canvas = document.getElementById('bgCanvas');
+    
     if (canvas) {
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: true });
         let width, height;
         let particles = [];
+        let mouseX = 0, mouseY = 0;
 
         function resize() {
             width = canvas.width = window.innerWidth;
@@ -145,35 +156,31 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', resize);
         resize();
 
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.size = Math.random() * 3 + 1; // 1 to 4px
-                this.speedX = Math.random() * 2 - 1; // Faster
-                this.speedY = Math.random() * 2 - 1;
-                this.color = `hsla(${Math.random() * 360}, 100%, 50%, ${Math.random() * 0.5 + 0.3})`; // RGB rainbow
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = `hsla(${Math.random() * 360}, 100%, 50%, 0.4)`;
+                this.angle = Math.random() * Math.PI * 2;
             }
 
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                // Mouse interaction - move away from mouse
-                const dx = this.x - mouseX;
-                const dy = this.y - mouseY;
-                const distance = Math.sqrt(dx*dx + dy*dy);
-                
-                if (distance < 100) {
-                    const angle = Math.atan2(dy, dx);
-                    this.x += Math.cos(angle) * 5;
-                    this.y += Math.sin(angle) * 5;
-                }
-
-                if (this.x > width) this.x = 0;
-                if (this.x < 0) this.x = width;
-                if (this.y > height) this.y = 0;
-                if (this.y < 0) this.y = height;
+                // Simple boundary wrapping
+                if (this.x > width + 10) this.x = -10;
+                if (this.x < -10) this.x = width + 10;
+                if (this.y > height + 10) this.y = -10;
+                if (this.y < -10) this.y = height + 10;
             }
 
             draw() {
@@ -186,15 +193,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function initParticles() {
             particles = [];
-            const particleCount = 50; // Number of fireflies
+            const particleCount = 25; // Reduced from 50
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
         }
 
+        let frameCount = 0;
         function animateCanvas() {
             ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(0,0,0,0)'; // Transparent clear
             
             particles.forEach(p => {
                 p.update();

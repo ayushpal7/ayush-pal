@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const revealElements = document.querySelectorAll('.section-title, .card, .about-text, .portfolio-item');
+    const revealElements = document.querySelectorAll('.section-heading, .service-row, .about-text, .portfolio-item');
     revealElements.forEach(el => {
         el.classList.add('reveal');
         observer.observe(el);
@@ -81,32 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Custom Cursor (Optimized) ---
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-    let rafId = null;
-    let mouseX = 0, mouseY = 0;
-    let outlineX = 0, outlineY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        
-        if (!rafId) {
-            rafId = requestAnimationFrame(() => {
-                cursorDot.style.left = mouseX + 'px';
-                cursorDot.style.top = mouseY + 'px';
-                
-                outlineX += (mouseX - outlineX) * 0.2;
-                outlineY += (mouseY - outlineY) * 0.2;
-                cursorOutline.style.left = outlineX + 'px';
-                cursorOutline.style.top = outlineY + 'px';
-                
-                rafId = null;
-            });
-        }
-    });
-
+    // Custom Cursor (Optimized) removed
     // --- 3D Tilt Effect for Cards (Optimized) ---
     const cards = document.querySelectorAll('.card');
     let tiltRafId = null;

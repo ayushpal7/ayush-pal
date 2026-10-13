@@ -3,55 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayush Pal | Portfolio</title>
+    <title>Ayush Pal | Digital Architect</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Placeholder for FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <canvas id="bgCanvas"></canvas>
+    <div class="grain"></div>
 
     <header>
         <nav class="navbar">
-            <div class="logo">Ayush Pal</div>
+            <a class="logo" href="#home"><span>AP</span><b>AYUSH PAL</b></a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About <em>01</em></a></li>
+                <li><a href="#services">Capabilities <em>02</em></a></li>
+                <li><a href="#portfolio">Selected work <em>03</em></a></li>
             </ul>
-            <div class="hamburger">
+            <a class="nav-cta" href="#contact">Let's talk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <button class="hamburger" aria-label="Open menu">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </nav>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="mandala-bg"></div>
-            <div class="profile-container">
-                <img src="https://avatars.githubusercontent.com/u/254660270?v=4" alt="Ayush Pal" class="profile-img">
-            </div>
-            <h1>Ayush Pal</h1>
-            <p class="roles"><span class="typing-text"></span></p>
-            <a href="#contact" class="btn-primary">Connect With Me</a>
+        <div class="hero-copy">
+            <p class="eyebrow"><span class="status-dot"></span> Available for select projects <span class="mono">/ 2026</span></p>
+            <h1>Digital ideas,<br><span>made tangible.</span></h1>
+            <p class="hero-description">I am Ayush Pal, a developer and designer building expressive digital experiences where clear systems meet strong visual instincts.</p>
+            <div class="hero-actions"><a href="#portfolio" class="btn-primary">Explore my work <i class="fa-solid fa-arrow-down"></i></a><a href="mailto:contact@ayushpal.com" class="text-link">Start a conversation <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-core"><span>AP</span></div><div class="orbit-label label-top">CODE / DESIGN</div><div class="orbit-label label-bottom">DELHI, INDIA</div>
         </div>
     </section>
 
-    <!-- Background Grid Effect -->
-    <div class="code-rain"></div>
+    <div class="ticker" aria-label="Areas of practice"><div class="ticker-track"><span>WEB DEVELOPMENT</span><i>✳</i><span>VISUAL SYSTEMS</span><i>✳</i><span>PRODUCT THINKING</span><i>✳</i><span>WEB DEVELOPMENT</span><i>✳</i><span>VISUAL SYSTEMS</span><i>✳</i></div></div>
 
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <div class="section-heading"><span class="section-number">01</span><h2>About the<br><i>practice</i></h2><span class="heading-line"></span></div>
             <div class="about-grid">
+                <div class="about-lede">Good work lives between <span>curiosity</span> and precision.</div>
                 <div class="about-text">
-                    <p>I am a creative professional blending the art of design with the logic of code. My work reflects a deep appreciation for structure, aesthetics, and user experience, inspired by the colorful and intricate heritage of India.</p>
-                    <p>Whether I'm crafting a logo or building a complex web application, I bring passion and precision to every project.</p>
+                    <p>I am a creative professional blending the art of design with the logic of code. My work reflects a deep appreciation for structure, aesthetics, and user experience.</p>
+                    <p>From a sharp visual identity to a complex web application, I turn loose ideas into useful, memorable digital spaces.</p>
+                    <div class="signature">AYUSH PAL <span>/ INDEPENDENT CREATIVE</span></div>
                 </div>
                 <!-- You can add an image here later -->
             </div>
@@ -60,64 +59,46 @@
 
     <section id="services" class="section alt-bg">
         <div class="container">
-            <h2 class="section-title">My Craft</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <i class="fas fa-code icon"></i>
-                    <h3>Web Development</h3>
-                    <p>Building responsive, fast, and culturally rich websites that tell a story.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-paint-brush icon"></i>
-                    <h3>Graphic Design</h3>
-                    <p>Visual storytelling through logos, branding, and digital art with a unique touch.</p>
-                </div>
-                <div class="card">
-                    <i class="fas fa-laptop-code icon"></i>
-                    <h3>Full Stack Dev</h3>
-                    <p>End-to-end solutions, creating seamless experiences from database to user interface.</p>
-                </div>
+            <div class="section-heading"><span class="section-number">02</span><h2>What I<br><i>bring</i></h2><span class="heading-line"></span></div>
+            <div class="service-list">
+                <article class="service-row"><span class="service-index">01</span><i class="fa-solid fa-code"></i><div><h3>Web development</h3><p>Responsive, fast, and thoughtful websites that turn attention into action.</p></div><i class="fa-solid fa-arrow-up-right-from-square service-arrow"></i></article>
+                <article class="service-row"><span class="service-index">02</span><i class="fa-solid fa-wand-magic-sparkles"></i><div><h3>Visual direction</h3><p>Distinct identities, interfaces, and digital art with a point of view.</p></div><i class="fa-solid fa-arrow-up-right-from-square service-arrow"></i></article>
+                <article class="service-row"><span class="service-index">03</span><i class="fa-solid fa-layer-group"></i><div><h3>Full-stack thinking</h3><p>End-to-end systems that make the experience feel simple for everyone.</p></div><i class="fa-solid fa-arrow-up-right-from-square service-arrow"></i></article>
             </div>
         </div>
     </section>
 
     <section id="portfolio" class="section">
         <div class="container">
-            <h2 class="section-title">Recent Work</h2>
+            <div class="section-heading"><span class="section-number">03</span><h2>Selected<br><i>signals</i></h2><span class="heading-line"></span><a href="#contact" class="heading-link">Have a project? <u>Let's talk</u> <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
             <div class="portfolio-grid">
                 <!-- Nakshaktra.in -->
                 <div class="portfolio-item">
-                        <a href="https://nakshaktra.in" target="_blank" class="portfolio-img-container">
+                        <a href="https://nakshaktra.in" target="_blank" rel="noreferrer" class="portfolio-img-container">
                             <img src="nakshaktra.png" alt="Nakshaktra.in" class="portfolio-img">
-                            <div class="portfolio-overlay">
-                                <span class="visit-btn">Visit Site</span>
-                            </div>
+                            <div class="portfolio-overlay"><span>View project <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
                         </a>
-                    <h3>Nakshaktra.in</h3>
+                    <div class="project-meta"><span>01 / 03</span><span>2024</span></div><h3>Nakshaktra.in</h3>
                     <p class="project-domain">Premium Content Blogging Platform</p>
                     <a href="https://nakshaktra.in" target="_blank" class="domain-link">nakshaktra.in</a>
                 </div>
                 <!-- KeywordFinder.dev -->
                 <div class="portfolio-item">
-                        <a href="https://keywordfinder.dev" target="_blank" class="portfolio-img-container">
+                        <a href="https://keywordfinder.dev" target="_blank" rel="noreferrer" class="portfolio-img-container">
                             <img src="keywordfinder.png" alt="KeywordFinder.dev" class="portfolio-img">
-                            <div class="portfolio-overlay">
-                                <span class="visit-btn">Visit Site</span>
-                            </div>
+                            <div class="portfolio-overlay"><span>View project <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
                         </a>
-                    <h3>KeywordFinder.dev</h3>
+                    <div class="project-meta"><span>02 / 03</span><span>2024</span></div><h3>KeywordFinder.dev</h3>
                     <p class="project-domain">Keyword Research Tool</p>
                     <a href="https://keywordfinder.dev" target="_blank" class="domain-link">keywordfinder.dev</a>
                 </div>
                 <!-- ToolSphere.dev -->
                 <div class="portfolio-item">
-                        <a href="https://toolsphere.dev" target="_blank" class="portfolio-img-container">
+                        <a href="https://toolsphere.dev" target="_blank" rel="noreferrer" class="portfolio-img-container">
                             <img src="toolsphere.png" alt="ToolSphere.dev" class="portfolio-img">
-                            <div class="portfolio-overlay">
-                                <span class="visit-btn">Visit Site</span>
-                            </div>
+                            <div class="portfolio-overlay"><span>View project <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
                         </a>
-                    <h3>ToolSphere.dev</h3>
+                    <div class="project-meta"><span>03 / 03</span><span>2025</span></div><h3>ToolSphere.dev</h3>
                     <p class="project-domain">All Developer Tools</p>
                     <a href="https://toolsphere.dev" target="_blank" class="domain-link">toolsphere.dev</a>
                 </div>
@@ -127,13 +108,11 @@
 
     <section id="contact" class="section footer-section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p>Let's create something meaningful together.</p>
+            <p class="eyebrow">Have a good idea?</p><h2>Let's make it<br><i>real.</i></h2>
             <div class="contact-links">
-                <a href="mailto:contact@ayushpal.com" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
-                <a href="#" class="contact-btn"><i class="fab fa-discord"></i> Discord</a>
-                <a href="https://github.com/ayushpal7" target="_blank" class="contact-btn"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#" class="contact-btn"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="mailto:contact@ayushpal.com" class="contact-btn"><i class="fas fa-envelope"></i><span>Email me</span></a>
+                <a href="https://github.com/ayushpal7" target="_blank" rel="noreferrer" class="contact-btn"><i class="fab fa-github"></i><span>GitHub</span></a>
+                <a href="#" class="contact-btn"><i class="fab fa-instagram"></i><span>Instagram</span></a>
             </div>
             <footer>
                 <p>&copy; 2026 | Everything is Made with <span class="heart">❤</span> in India.</p>

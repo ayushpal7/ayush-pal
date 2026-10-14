@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const pageLoader = document.querySelector('.page-loader');
+
+    window.addEventListener('load', () => {
+        window.setTimeout(() => pageLoader?.classList.add('is-hidden'), 450);
+    }, { once: true });
     
     // --- Scroll Animations ---
     const observerOptions = {

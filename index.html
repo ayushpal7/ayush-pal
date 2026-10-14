@@ -17,13 +17,13 @@
     <header>
         <nav class="navbar">
             <a class="logo" href="#home"><span>AP</span><b>AYUSH PAL</b></a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="primary-navigation">
                 <li><a href="#about">About <em>01</em></a></li>
                 <li><a href="#services">Capabilities <em>02</em></a></li>
                 <li><a href="#portfolio">Selected work <em>03</em></a></li>
             </ul>
             <a class="nav-cta" href="#contact">Let's talk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <button class="hamburger" aria-label="Open menu">
+            <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
@@ -73,7 +73,7 @@
             <div class="section-heading"><span class="section-number">03</span><h2>Selected<br><i>signals</i></h2><span class="heading-line"></span><a href="#contact" class="heading-link">Have a project? <u>Let's talk</u> <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
             <div class="portfolio-grid">
                 <!-- Nakshaktra.in -->
-                <div class="portfolio-item">
+                <article class="portfolio-item">
                         <a href="https://nakshaktra.in" target="_blank" rel="noreferrer" class="portfolio-img-container">
                             <img src="nakshaktra.png" alt="Nakshaktra.in" class="portfolio-img">
                             <div class="portfolio-overlay"><span>View project <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
@@ -81,9 +81,9 @@
                     <div class="project-meta"><span>01 / 03</span><span>2024</span></div><h3>Nakshaktra.in</h3>
                     <p class="project-domain">Premium Content Blogging Platform</p>
                     <a href="https://nakshaktra.in" target="_blank" class="domain-link">nakshaktra.in</a>
-                </div>
+                </article>
                 <!-- KeywordFinder.dev -->
-                <div class="portfolio-item">
+                <article class="portfolio-item">
                         <a href="https://keywordfinder.dev" target="_blank" rel="noreferrer" class="portfolio-img-container">
                             <img src="keywordfinder.png" alt="KeywordFinder.dev" class="portfolio-img">
                             <div class="portfolio-overlay"><span>View project <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
@@ -91,9 +91,9 @@
                     <div class="project-meta"><span>02 / 03</span><span>2024</span></div><h3>KeywordFinder.dev</h3>
                     <p class="project-domain">Keyword Research Tool</p>
                     <a href="https://keywordfinder.dev" target="_blank" class="domain-link">keywordfinder.dev</a>
-                </div>
+                </article>
                 <!-- ToolSphere.dev -->
-                <div class="portfolio-item">
+                <article class="portfolio-item">
                         <a href="https://toolsphere.dev" target="_blank" rel="noreferrer" class="portfolio-img-container">
                             <img src="toolsphere.png" alt="ToolSphere.dev" class="portfolio-img">
                             <div class="portfolio-overlay"><span>View project <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
@@ -101,7 +101,7 @@
                     <div class="project-meta"><span>03 / 03</span><span>2025</span></div><h3>ToolSphere.dev</h3>
                     <p class="project-domain">All Developer Tools</p>
                     <a href="https://toolsphere.dev" target="_blank" class="domain-link">toolsphere.dev</a>
-                </div>
+                </article>
             </div>
         </div>
     </section>

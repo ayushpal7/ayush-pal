@@ -1,45 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Typing Effect ---
-    const roles = ["Web Developer", "Graphic Designer", "Tech Enthusiast", "UI/UX Designer"];
-    const typingElement = document.querySelector('.typing-text');
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typeSpeed = 100;
-    const deleteSpeed = 50;
-    const nextRoleDelay = 2000;
-
-    function type() {
-        if (!typingElement) return;
-        
-        const currentRole = roles[roleIndex];
-        
-        if (isDeleting) {
-            typingElement.textContent = currentRole.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typingElement.textContent = currentRole.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        let typeSpeedCurrent = isDeleting ? deleteSpeed : typeSpeed;
-
-        if (!isDeleting && charIndex === currentRole.length) {
-            isDeleting = true;
-            typeSpeedCurrent = nextRoleDelay;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            typeSpeedCurrent = 500;
-        }
-
-        setTimeout(type, typeSpeedCurrent);
-    }
-    
-    // Start typing loop
-    type();
-
     // --- Scroll Animations ---
     const observerOptions = {
         threshold: 0.15
@@ -65,7 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
         });
     }
 
@@ -74,43 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             navLinks.classList.remove('active');
+            hamburger?.setAttribute('aria-expanded', 'false');
+            hamburger?.setAttribute('aria-label', 'Open menu');
 
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
-        });
-    });
-
-    // Custom Cursor (Optimized) removed
-    // --- 3D Tilt Effect for Cards (Optimized) ---
-    const cards = document.querySelectorAll('.card');
-    let tiltRafId = null;
-    let currentCard = null;
-    let tiltX = 0, tiltY = 0;
-
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            currentCard = card;
-            if (!tiltRafId) {
-                tiltRafId = requestAnimationFrame(() => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    tiltX = ((y - centerY) / centerY) * -8;
-                    tiltY = ((x - centerX) / centerX) * 8;
-                    
-                    card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
-                    tiltRafId = null;
-                });
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
-            currentCard = null;
         });
     });
 
